@@ -1,7 +1,9 @@
 import React from 'react';
 import { FormErrors } from './FormErrors';
 
-// https://github.com/learnetto/react-form-validation-demo/blob/master/src/Form.js
+const TEMP_MIN = 20 // 68 F
+const TEMP_MAX = 40 // 104 F
+const MIN_TEMP_RANGE = 5 // range of 9 F
 
 class TemperatureForm extends React.Component {
   constructor(props) {
@@ -12,9 +14,11 @@ class TemperatureForm extends React.Component {
       formErrors: {
         highTemp: '',
         lowTemp: '',
+        bothTemps: '',
       },
       highTempValid: false,
       lowTempValid: false,
+      bothTempsValid: false,
       formValid: false,
     }
     this.handleChange = this.handleChange.bind(this)
@@ -34,45 +38,72 @@ class TemperatureForm extends React.Component {
     let fieldValidationErrors = this.state.formErrors
     let highTempValid = this.state.highTempValid
     let lowTempValid = this.state.lowTempValid
-    
+    let errorMessage = ' is invalid:';
+    let markedInvalid = false
+
+    if (isNaN(value)) {
+      markedInvalid = true
+      errorMessage += ' Must be a valid number.'
+    }
+    if (!(value >= TEMP_MIN && value <= TEMP_MAX)) {
+      markedInvalid = true
+      errorMessage += ' Must be between ' + TEMP_MIN + ' and ' + TEMP_MAX + ', inclusive.'
+    }
+
     switch(fieldName) {
       case 'highTemp':
-        if (value > 20 && value < 60) {
-          highTempValid = true
-        } else {
-          highTempValid = false
-        }
-        fieldValidationErrors.highTempValid = highTempValid ? '' : ' is invalid'
+        fieldValidationErrors.highTempValid = markedInvalid ? errorMessage : ''
+        highTempValid = !markedInvalid
         break
       case 'lowTemp':
-        if (value > 20 && value < 60) {
-          lowTempValid = true
-        } else {
-          lowTempValid = false
-        }
-        fieldValidationErrors.lowTempValid = lowTempValid ? '' : ' is invalid'
+        fieldValidationErrors.lowTempValid = markedInvalid ? errorMessage : ''
+        lowTempValid = !markedInvalid
         break
       default:
         break
     }
-    this.setState(
-      {
+
+    this.setState({
         formErrors: fieldValidationErrors,
         highTempValid: highTempValid,
         lowTempValid: lowTempValid,
-      },
-      this.validateForm
+      }, this.validateBothFields
+    )
+  }
+
+  validateBothFields() {
+    let fieldValidationErrors = this.state.formErrors
+    let bothTempsValid = this.state.bothTempsValid
+    let markedInvalid = false
+    let errorMessage = ' are invalid: '
+
+    if (Math.abs(this.state.highTemp - this.state.lowTemp) < MIN_TEMP_RANGE) {
+      markedInvalid = true
+      errorMessage += ' There must be at least 5 degrees difference between the high and low temperatures.'
+    }
+    if ((this.state.highTemp - this.state.lowTemp) <= 0) {
+      markedInvalid = true
+      errorMessage += ' The low temperature must be less than the high temperature.'
+    }
+
+    bothTempsValid = !markedInvalid
+    fieldValidationErrors.bothTempsValid = markedInvalid ? errorMessage : ''
+
+    this.setState({
+        formErrors: fieldValidationErrors,
+        bothTempsValid: bothTempsValid,
+      }, this.validateForm
     )
   }
 
   validateForm() {
     this.setState({
-      formValid: this.state.highTempValid && this.state.lowTempValid
+      formValid: this.state.highTempValid && this.state.lowTempValid && this.state.bothTempsValid
     })
   }
 
   errorClass(error) {
-    return(error.length === 0 ? '' : 'has-error')
+    return(error.length === 0 ? 'form-group' : 'form-group has-error')
   }
 
   handleSubmit (event) {
@@ -82,36 +113,38 @@ class TemperatureForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Set temperature</h2>
+      <>
         <div className="panel panel-default">
           <FormErrors formErrors={this.state.formErrors} />
         </div>
-        <div className={'form-group ${this.errorClass(this.state.formErrors.highTemp)}'}>
-          <label htmlFor="highTemp">High temp</label>
-          <input
-            type="number"
-            required
-            className="form-control"
-            name="highTemp"
-            placeholder=""
-            value={this.state.highTemp}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className={'form-group ${this.errorClass(this.state.formErrors.lowTemp)}'}>
-        <label htmlFor="password">Password</label>
-          <input
-            type="number"
-            className="form-control"
-            name="lowTemp"
-            placeholder=""
-            value={this.state.lowTemp}
-            onChange={this.handleChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Submit</button>
-    </form>
+        <form onSubmit={this.handleSubmit}>
+          <h2>Set temperature</h2>
+          <div className={this.errorClass(this.state.formErrors.highTemp)}>
+            <label htmlFor="highTemp">High temp</label>
+            <input
+              type="number"
+              required
+              className="form-control"
+              name="highTemp"
+              placeholder=""
+              value={this.state.highTemp}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className={this.errorClass(this.state.formErrors.lowTemp)}>
+          <label htmlFor="password">Password</label>
+            <input
+              type="number"
+              className="form-control"
+              name="lowTemp"
+              placeholder=""
+              value={this.state.lowTemp}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Submit</button>
+      </form>
+    </>
     )
   }
 }

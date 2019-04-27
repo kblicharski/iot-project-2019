@@ -14,7 +14,7 @@ function Header() {
     <header>
       <Col>
         <div id="post">
-          <Navbar expand="lg">
+          <Navbar expand="lg" bg="light">
             <Navbar.Brand><Link to='/'>Auto Terrarium</Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
