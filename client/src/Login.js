@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
       password: '',
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -25,9 +26,14 @@ class LoginForm extends React.Component {
     });
   }
 
+  handleSubmit (event) {
+    console.log('Form value: ' + this.state.username);
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         Username:
         <input
           type="text"
@@ -38,11 +44,12 @@ class LoginForm extends React.Component {
 
         Password:
         <input
-          type="text"
+          type="password"
           name="password"
           value={this.state.password}
           onChange={this.handleChange}
         />
+        <input type="submit" value="Submit"/>
     </form>
     )
   }
