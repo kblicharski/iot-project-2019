@@ -2,6 +2,62 @@
 idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
 */
 
+.center{
+  background: #87fffd; 
+  background: -moz-linear-gradient(-45deg, #87fffd 0%, #e93cec 100%); 
+  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
+  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );
+  
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.littlebox {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 5rem;
+}
+
+.littlebox > form{
+  display: flex;
+  flex-direction: column;
+}
+
+.mainbox {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem !important;
+}
+
+.mainbox > form{
+  display: flex;
+  flex-direction: column;
+}
+
+.top-margin {
+  margin-top: 50px;
+}
+
+#special-button {
+  font-family:"MS Sans Serif";
+  font-size:11px;
+  outline:1px solid #000000;
+  background:#C0C0C0;
+  border-width:1px;
+  border-style:solid;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  padding:4px 10px;
+  margin:20px auto 3px;
+  display:block;
+  position:relative;
+  bottom:0px;
+}
+
 /*
 .button {
   background-color: yellow;
@@ -34,5 +90,4 @@ body{
   background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
   background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );}
-
-  */
+*/

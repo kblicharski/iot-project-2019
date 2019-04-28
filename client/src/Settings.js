@@ -3,6 +3,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
+import withAuth from './withAuth';
 import TemperatureForm from './TemperatureForm'
 import HumidityForm from './HumidityForm'
 import FeedingForm from './FeedingForm'
@@ -20,16 +21,18 @@ function Settings() {
   return (
     <div>
       <Row>
-        <h1>Settings</h1>
+        <Col xs>
+          <h1>Settings</h1>
+        </Col>
       </Row>
       <Row>
-        <Col sm>
+        <Col xs>
           <TemperatureForm />
         </Col>
-        <Col sm>
+        <Col xs>
           <HumidityForm />
         </Col>
-        <Col sm>
+        <Col xs>
           <FeedingForm />
         </Col>
       </Row>
@@ -37,4 +40,4 @@ function Settings() {
   )
 }
 
-export default Settings;
+export default withAuth(Settings);
