@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 import CardGroup from 'react-bootstrap/CardGroup'
+
+import withAuth from './withAuth'
 
 function Dashboard() {
   return (
@@ -42,4 +43,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default withAuth(Dashboard)
