@@ -17,9 +17,8 @@ class ConfigsController < ApplicationController
   end
 
   def create
-    c = Config.first.update_attributes(config_params)
-    c.save!
-    json_response(c, :created)
+    Config.first.update_attributes(config_params)
+    json_response(Config.first, :created)
   end
 
   private
