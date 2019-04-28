@@ -23,8 +23,8 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <div id="post">
-          <Navbar expand="lg" bg="light">
+        <div className="header-body">
+          <Navbar expand="lg">
             <Navbar.Brand><Link to='/'><button className="windows-button title-button">Auto Terrarium</button></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
