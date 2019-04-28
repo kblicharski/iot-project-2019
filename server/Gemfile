@@ -49,5 +49,3 @@ gem 'knock'
 
 # Enable CORS
 gem 'rack-cors'
-
-gem 'httparty'

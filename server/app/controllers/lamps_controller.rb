@@ -1,9 +1,6 @@
 class LampsController < ApplicationController
-  require 'httparty'
   before_action :authenticate_user
 
-  # Note: For some reason, these two actions always return a 500 error
-  # despite working properly, not sure what this is all about
   def set_light
     l = Light.first
     l.update_attributes(on: params[:on])
