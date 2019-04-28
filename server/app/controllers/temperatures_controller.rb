@@ -14,6 +14,13 @@ class TemperaturesController < ApplicationController
     json_response(t, :created)
   end
 
+  def most_recent
+    # https://stackoverflow.com/a/45011086
+    ids = Temperature.select("MAX(id) AS id").group(:description).collect(&:id)
+    result = Temperature.order("created_at DESC").where(:id => ids)
+    json_response(result)
+  end
+
   private
 
   def temp_params

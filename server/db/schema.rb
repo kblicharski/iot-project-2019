@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 2019_04_28_070148) do
   end
 
   create_table "doors", force: :cascade do |t|
-    t.boolean "open"
+    t.boolean "open", default: true
     t.integer "crickets_fed", default: 0
+    t.string "status", default: "feeding"
   end
 
   create_table "heat_lamps", force: :cascade do |t|
