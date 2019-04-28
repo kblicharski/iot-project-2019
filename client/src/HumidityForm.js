@@ -1,4 +1,6 @@
 import React from 'react';
+
+import AuthService from './AuthService'
 import { FormErrors } from './FormErrors';
 
 // All in percentages
@@ -21,6 +23,7 @@ class HumidityForm extends React.Component {
       lowHumValid: false,
       bothHumsValid: false,
       formValid: false,
+      message: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -109,8 +112,45 @@ class HumidityForm extends React.Component {
   }
 
   handleSubmit (event) {
-    console.log('Form value: ' + this.state.highHum);
     event.preventDefault();
+
+    let auth = new AuthService()
+    let url = `${auth.domain}/app/settings`
+
+    return fetch(
+      url, 
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + auth.getToken()
+        },
+        body: JSON.stringify({
+          config: {
+            high_humidity: this.state.highHum,
+            low_humidity: this.state.lowHum,
+          }
+        }),
+      }
+    )
+      .then(this.checkStatus)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          message: "submitted"
+        })
+      })
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      let error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
   }
 
   render() {
@@ -119,6 +159,9 @@ class HumidityForm extends React.Component {
         <h2>Set humidity</h2>
         <div className="panel panel-default">
           <FormErrors formErrors={this.state.formErrors} />
+        </div>
+        <div className="panel panel-default">
+          {this.state.message}
         </div>
         <div className={'form-group ${this.errorClass(this.state.formErrors.highHum)}'}>
           <label htmlFor="highHum">High Humidity</label>
@@ -143,7 +186,7 @@ class HumidityForm extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Submit</button>
+        <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
     </form>
     )
   }

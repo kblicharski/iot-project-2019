@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
 import AuthService from './AuthService'
 import history from './history'
@@ -77,7 +76,7 @@ class Login extends React.Component {
                     name="password"
                   />
                 </Form.Group>
-                <button id="special-button" type="submit">
+                <button className="windows-button" type="submit">
                   Submit
                 </button>
               </Form>

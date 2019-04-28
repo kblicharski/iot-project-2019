@@ -1,4 +1,6 @@
 import React from 'react';
+
+import AuthService from './AuthService'
 import { FormErrors } from './FormErrors';
 
 const MIN_CRICKETS_PER_FEED = 1
@@ -14,6 +16,7 @@ class FeedingForm extends React.Component {
       },
       cricketsPerFeedValid: false,
       formValid: false,
+      message: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -68,15 +71,54 @@ class FeedingForm extends React.Component {
   }
 
   handleSubmit (event) {
-    console.log('Form value: ' + this.state.cricketsPerFeed);
     event.preventDefault();
+
+    let auth = new AuthService()
+    let url = `${auth.domain}/app/settings`
+
+    return fetch(
+      url, 
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + auth.getToken()
+        },
+        body: JSON.stringify({
+          config: {
+            crickets_to_feed: this.state.cricketsPerFeed,
+          }
+        }),
+      }
+    )
+      .then(this.checkStatus)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          message: "submitted"
+        })
+      })
   }
 
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      let error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
+  }
+  
   render() {
     return (
       <>
         <div className="panel panel-default">
           <FormErrors formErrors={this.state.formErrors} />
+        </div>
+        <div className="panel panel-default">
+          {this.state.message}
         </div>
         <form onSubmit={this.handleSubmit}>
           <h2>Feeding options</h2>
@@ -92,7 +134,7 @@ class FeedingForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Submit</button>
+          <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
         </form>
       </>
     )
