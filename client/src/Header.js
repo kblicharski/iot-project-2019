@@ -25,15 +25,14 @@ class Header extends React.Component {
       <header>
         <div id="post">
           <Navbar expand="lg" bg="light">
-            <Navbar.Brand><Link to='/'>Auto Terrarium</Link></Navbar.Brand>
+            <Navbar.Brand><Link to='/'><button className="windows-button title-button">Auto Terrarium</button></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
-                <Nav.Link><Link to='/dashboard'>Dashboard</Link></Nav.Link>
-                <Nav.Link><Link to='/settings'>Settings</Link></Nav.Link>
+                <Nav.Link><Link to='/dashboard'><button className="windows-button header-button">Dashboard</button></Link></Nav.Link>
+                <Nav.Link><Link to='/settings'><button className="windows-button header-button">Settings</button></Link></Nav.Link>
               </Nav>
-              <button type="button" className="mr-sm-2 windows-button" onClick={this.handleLogout.bind(this)}>Logout</button>
+              <button type="button" className="mr-sm-2 windows-button logout-button" onClick={this.handleLogout.bind(this)}>Logout</button>
             </Navbar.Collapse>
           </Navbar>
         </div>
