@@ -19,21 +19,25 @@ For help with routing, go here: https://blog.pshrmn.com/entry/simple-react-route
 
 function App() {
   return (
-    <Container>
-      <Row>
-        <Header />
-      </Row>
-      <Row>
-        <main>
-          <Col>
-            <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/dashboard' component={Dashboard}/>
-              <Route path='/settings' component={Settings}/>
-            </Switch>
+    <Container fluid="true"  className="center">
+      <Container className="mainbox">
+        <Row>
+          <Col xs>
+            <Header />
           </Col>
-        </main>
-      </Row>
+        </Row>
+        <Row>
+          <Col xs>
+            <main>
+              <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route path='/dashboard' component={Dashboard}/>
+                <Route path='/settings' component={Settings}/>
+              </Switch>
+            </main>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 }

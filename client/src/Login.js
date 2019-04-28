@@ -48,43 +48,41 @@ class Login extends React.Component {
   render() {
     return (
       <Container fluid="true"  className="center">
-        <div>
         <div className="littlebox">
-        <Row>
-          <Col>
-            <h1>Please log in</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter username..."
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                  name="username"
-                />
-              </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  type="password"
-                  placeholder="Enter password..."
-                  name="password"
-                />
-              </Form.Group>
-              <button id="special-button" type="submit">
-                Submit
-              </button>
-            </Form>
-          </Col>
-        </Row>
-        </div>
+          <Row>
+            <Col>
+              <h1>Please log in</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Group controlId="username">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username..."
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                    name="username"
+                  />
+                </Form.Group>
+                <Form.Group controlId="password">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    type="password"
+                    placeholder="Enter password..."
+                    name="password"
+                  />
+                </Form.Group>
+                <button id="special-button" type="submit">
+                  Submit
+                </button>
+              </Form>
+            </Col>
+          </Row>
         </div>
       </Container>
     )

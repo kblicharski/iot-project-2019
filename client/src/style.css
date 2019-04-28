@@ -28,6 +28,17 @@ idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
   flex-direction: column;
 }
 
+.mainbox {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 0.8rem !important;
+}
+
+.mainbox > form{
+  display: flex;
+  flex-direction: column;
+}
+
 .top-margin {
   margin-top: 50px;
 }

@@ -21,16 +21,18 @@ function Settings() {
   return (
     <div>
       <Row>
-        <h1>Settings</h1>
+        <Col xs>
+          <h1>Settings</h1>
+        </Col>
       </Row>
       <Row>
-        <Col sm>
+        <Col xs>
           <TemperatureForm />
         </Col>
-        <Col sm>
+        <Col xs>
           <HumidityForm />
         </Col>
-        <Col sm>
+        <Col xs>
           <FeedingForm />
         </Col>
       </Row>
