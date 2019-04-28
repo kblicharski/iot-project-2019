@@ -17,8 +17,8 @@ class ConfigsController < ApplicationController
   end
 
   def create
-    c = Config.create!(config_params)
-    Config.where.not(id: c.id).delete_all
+    c = Config.first.update_attributes(config_params)
+    c.save!
     json_response(c, :created)
   end
 
