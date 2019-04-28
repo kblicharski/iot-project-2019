@@ -1,5 +1,7 @@
-import React from 'react';
-import { FormErrors } from './FormErrors';
+import React from 'react'
+
+import AuthService from './AuthService'
+import { FormErrors } from './FormErrors'
 
 const TEMP_MIN = 20 // 68 F
 const TEMP_MAX = 40 // 104 F
@@ -20,6 +22,7 @@ class TemperatureForm extends React.Component {
       lowTempValid: false,
       bothTempsValid: false,
       formValid: false,
+      message: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -106,9 +109,46 @@ class TemperatureForm extends React.Component {
     return(error.length === 0 ? 'form-group' : 'form-group has-error')
   }
 
-  handleSubmit (event) {
-    console.log('Form value: ' + this.state.highTemp);
+  handleSubmit(event) {
     event.preventDefault();
+
+    let auth = new AuthService()
+    let url = `${auth.domain}/app/settings`
+
+    return fetch(
+      url, 
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + auth.getToken()
+        },
+        body: JSON.stringify({
+          config: {
+            high_temp: this.state.highTemp,
+            low_temp: this.state.lowTemp,
+          }
+        }),
+      }
+    )
+      .then(this.checkStatus)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          message: "submitted"
+        })
+      })
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    } else {
+      let error = new Error(response.statusText)
+      error.response = response
+      throw error
+    }
   }
 
   render() {
@@ -116,6 +156,9 @@ class TemperatureForm extends React.Component {
       <>
         <div className="panel panel-default">
           <FormErrors formErrors={this.state.formErrors} />
+        </div>
+        <div className="panel panel-default">
+          {this.state.message}
         </div>
         <form onSubmit={this.handleSubmit}>
           <h2>Set temperature</h2>
@@ -142,7 +185,7 @@ class TemperatureForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Submit</button>
+          <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
       </form>
     </>
     )

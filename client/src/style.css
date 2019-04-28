@@ -43,7 +43,7 @@ idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
   margin-top: 50px;
 }
 
-#special-button {
+.windows-button {
   font-family:"MS Sans Serif";
   font-size:11px;
   outline:1px solid #000000;
@@ -52,7 +52,7 @@ idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
   border-style:solid;
   border-color:#FFFFFF #808080 #808080 #FFFFFF;
   padding:4px 10px;
-  margin:20px auto 3px;
+  margin: auto;
   display:block;
   position:relative;
   bottom:0px;

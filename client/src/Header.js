@@ -32,8 +32,8 @@ class Header extends React.Component {
                 <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
                 <Nav.Link><Link to='/dashboard'>Dashboard</Link></Nav.Link>
                 <Nav.Link><Link to='/settings'>Settings</Link></Nav.Link>
-                <button type="button" className="form-submit" onClick={this.handleLogout.bind(this)}>Logout</button>
               </Nav>
+              <button type="button" className="mr-sm-2 windows-button" onClick={this.handleLogout.bind(this)}>Logout</button>
             </Navbar.Collapse>
           </Navbar>
         </div>
