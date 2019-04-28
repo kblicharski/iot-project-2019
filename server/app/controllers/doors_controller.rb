@@ -2,7 +2,7 @@ class DoorsController < ApplicationController
 
   def open
     raise ArgumentError, 'Door already open' unless Door.where(open: true).count == 0
-    @door = Door.create!(open: true, crickets_fed: 0, crickets_to_feed: params[:crickets_to_feed])
+    @door = Door.create!(open: true, crickets_fed: 0)
     json_response(@door)
   end
 
@@ -23,8 +23,9 @@ class DoorsController < ApplicationController
     @door.update_attributes(crickets_fed: @door.crickets_fed + 1)
     @door.save!
 
-    if @door.crickets_fed >= @door.crickets_to_feed
-      @door.update_attributes(open: false, crickets_fed: @door.crickets_to_feed)
+    c = Config.first.crickets_to_feed
+    if @door.crickets_fed >= c
+      @door.update_attributes(open: false, crickets_fed: c)
       @door.save!
     end
 

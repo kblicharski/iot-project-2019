@@ -3,7 +3,6 @@ class ConfigsController < ApplicationController
 
   def index
     hash = Config.first.as_json(except: %i[id created_at updated_at])
-    hash[:heat_lamp] = HeatLamp.first.percentage
     hash[:light] = Light.first.on
     hash[:crickets_fed] = Door.all.sum(:crickets_fed)
 
@@ -24,7 +23,7 @@ class ConfigsController < ApplicationController
   private
 
   def config_params
-    params.require(:config).permit(:high_temp, :low_temp, :high_humidity, :low_humidity)
+    params.require(:config).permit(:high_temp, :low_temp, :high_humidity, :low_humidity, :crickets_to_feed)
   end
 
 end
