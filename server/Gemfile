@@ -47,3 +47,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # JWT Authentication
 gem 'knock'
 
+# Enable CORS
+gem 'rack-cors'

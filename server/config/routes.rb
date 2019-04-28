@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post 'user_token' => 'user_token#create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount ActionCable.server => '/cable'
+  resources :configs, only: %i[index create]
+  resources :temperatures, only: %i[index create]
+  resources :humidities, only: %i[index create]
+  resources :lights, only: %i[index create]
 end
