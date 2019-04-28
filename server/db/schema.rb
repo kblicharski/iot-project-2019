@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_070148) do
     t.float "low_temp"
     t.float "high_humidity"
     t.float "low_humidity"
+    t.integer "crickets_to_feed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,7 +25,6 @@ ActiveRecord::Schema.define(version: 2019_04_28_070148) do
   create_table "doors", force: :cascade do |t|
     t.boolean "open"
     t.integer "crickets_fed", default: 0
-    t.integer "crickets_to_feed"
   end
 
   create_table "heat_lamps", force: :cascade do |t|
