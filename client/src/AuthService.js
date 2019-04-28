@@ -3,24 +3,25 @@
 import decode from 'jwt-decode';
 
 export default class AuthService {
-  // Initializing important variables
-  constructor(domain) {
-    this.domain = domain || 'http://localhost:8080' // API server domain
+  constructor() {
+    this.domain = 'https://iot-project-2019-239007.appspot.com' // API server domain
     this.fetch = this.fetch.bind(this)
     this.login = this.login.bind(this)
     this.getProfile = this.getProfile.bind(this)
   }
 
-  login(username, password) {
+  login(email, password) {
     // Get a token from api server using the fetch api
-    return this.fetch(`${this.domain}/login`, {
+    return this.fetch(`${this.domain}/user_token`, {
       method: 'POST',
       body: JSON.stringify({
-        username,
-        password
+        auth: {
+          email,
+          password
+        }
       })
     }).then(res => {
-      this.setToken(res.token) // Setting the token in localStorage
+      this.setToken(res.jwt) // Setting the token in localStorage
       return Promise.resolve(res);
     })
   }
