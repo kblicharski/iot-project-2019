@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_031916) do
+ActiveRecord::Schema.define(version: 2019_04_28_044516) do
 
   create_table "configs", force: :cascade do |t|
     t.float "high_temp"
@@ -21,9 +21,21 @@ ActiveRecord::Schema.define(version: 2019_04_28_031916) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "heat_lamps", force: :cascade do |t|
+    t.float "percentage", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "humidities", force: :cascade do |t|
     t.float "value"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lights", force: :cascade do |t|
+    t.boolean "on", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

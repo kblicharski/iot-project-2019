@@ -3,8 +3,8 @@ class HumiditiesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    s = Humidity.at(params[:start].to_i / 1000)
-    e = Humidity.at(params[:ending].to_i / 1000)
+    s = Time.at(params[:start].to_i / 1000)
+    e = Time.at(params[:ending].to_i / 1000)
     humidities = Humidity.where('created_at >= ? and created_at <= ?', s, e)
     json_response(humidities)
   end
