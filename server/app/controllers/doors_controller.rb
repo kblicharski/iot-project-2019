@@ -42,4 +42,8 @@ class DoorsController < ApplicationController
   def most_recent_feeding
     json_response(Door.last)
   end
+
+  def all_feedings
+    json_response(Door.all)
+  end
 end
