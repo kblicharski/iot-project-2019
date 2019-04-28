@@ -1,14 +1,6 @@
-/*  
-idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
-*/
-
-.center{
-  background: #87fffd; 
-  background: -moz-linear-gradient(-45deg, #87fffd 0%, #e93cec 100%); 
-  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
-  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );
-  
+.root-container {
+  font-family: "MS Sans Serif";
+  font-size:11px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -17,35 +9,151 @@ idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
   align-items: center;
 }
 
-.littlebox {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 5rem;
+.app-container {
+  background: #87fffd; 
+  background: -moz-linear-gradient(-45deg, #87fffd 0%, #e93cec 100%); 
+  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
+  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );
 }
 
-.littlebox > form{
-  display: flex;
-  flex-direction: column;
+.login-container {
+  background: #ff147d; 
+  background: -moz-linear-gradient(-45deg, #ff147d 0%, #9aff42 100%); 
+  background: -webkit-linear-gradient(-45deg, #ff147d 0%,#9aff42 100%); 
+  background: linear-gradient(135deg, #ff147d 0%,#9aff42 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff147d', endColorstr='#9aff42',GradientType=1 );
+}
+
+.windows-mainbox {
+  background:#C0C0C0;
+  border-width:1px;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  border-style:solid;
+  padding:1px;
+}
+
+.windows-bar {
+  height:18px;
+  width:100%;
+  background:#000080;
+  color:#FFF;
+}
+
+.windows-bar-image {
+  float:left;
+}
+
+.windows-bar-text {
+  margin:2px 0 0 1px;
+  float:left;
+  font-family:Tahoma;
+  font-weight:bold;
+  font-size:11px;
+}
+
+.windows-bar-button {
+  margin:2px 2px 2px 0;
+  float:right;
+  width:14px;
+  height:13.5px;
+  background:#C0C0C0;
+  border-width:1px;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  padding:0;
+  font-size:9px;
+  font-weight:bold;
+  font-family:Tahoma;
+  text-align:center;
 }
 
 .mainbox {
-  background-color: #fff;
-  border-radius: 15px;
-  padding: 0.8rem !important;
+  background:#C0C0C0;
+  border-width:1px;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  border-style:solid;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  padding:1px;
+  justify-content: center;
+  align-items: center;
 }
 
-.mainbox > form{
-  display: flex;
-  flex-direction: column;
+
+
+img.title{
+  float:left;
+}
+p.title{
+  margin:2px 0 0 1px;
+  float:left;
+  font-family:Tahoma;
+  font-weight:bold;
+  font-size:11px;
+}
+.bar button{
+  /*position:absolute;
+  right:3px;
+  top:3px;*/
+  margin:2px 2px 2px 0;
+  float:right;
+  width:14px;
+  height:13.5px;
+  background:#C0C0C0;
+  border-width:1px;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  padding:0;
+  font-size:9px;
+  font-weight:bold;
+  font-family:Tahoma;
+  text-align:center;
+  focus:none;
 }
 
-.top-margin {
-  margin-top: 50px;
+.windows-body {
+  margin: 1px;
+  padding: 10px;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+}
+
+.main-body {
+  background-color: white;
+}
+
+.header-body {
+  flex-grow: 1;
+  margin: auto;
+  width: auto;
+  padding-left: 2px;
+  padding-right: 0px;
+  color: #000000;
+  border-top: 1px solid #929292;
+  border-left: 1px solid #929292;
+  border-bottom: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+}
+
+.form-control{
+  box-shadow: -1px -1px 0 1px #000, 1px 1px 0 1px #fff; 
+  border-top: 2px solid rgb(128,128,128);
+  border-left: 2px solid rgb(128,128,128);
+  border-right: 2px solid rgb(211,211,211);
+  border-bottom: 2px solid rgb(211,211,211);
+  border-radius: 0 !important;
+}
+
+.form-label {
+  font-size: 14px;
 }
 
 .windows-button {
   font-family:"MS Sans Serif";
-  font-size:11px;
+  font-size:18px;
   outline:1px solid #000000;
   background:#C0C0C0;
   border-width:1px;
@@ -58,36 +166,15 @@ idea: http://kristopolous.github.io/BOOTSTRA.386/index.html
   bottom:0px;
 }
 
-/*
-.button {
-  background-color: yellow;
+.header-button {
+  background: #81ff7a;
 }
 
-.navbar {
-  margin: 2px 0px 0px 2px;
-  background-color: #00007f;
-  width: 98%;
-  height: 16px;
-  color: #FFFFFF;
-  padding: 0px 0px 2px 2px;
+.logout-button {
+  background: #f6ff7a;
 }
 
-#post {
-  background: #C0C0C0;
-  margin: auto;
-  width: 400px;
-  height: auto;
-  border-top: 1px solid #FFFFFF;
-  border-left: 1px solid #FFFFFF;
-  border-bottom: 1px solid #000000;
-  border-right: 1px solid #000000;
+.title-button {
+  background: #ff99cf;
+  font-size:26px;
 }
-
-
-body{
-  background: #87fffd; 
-  background: -moz-linear-gradient(-45deg, #87fffd 0%, #e93cec 100%); 
-  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
-  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );}
-*/

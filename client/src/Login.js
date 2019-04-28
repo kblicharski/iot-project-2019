@@ -46,40 +46,47 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Container fluid="true"  className="center">
-        <div className="littlebox">
+      <Container fluid="true"  className="root-container login-container">
+        <div className="windows-mainbox">
           <Row>
             <Col>
-              <h1>Please log in</h1>
+              <div class="windows-bar">
+                <img src="http://i63.tinypic.com/117hi0p.png" width="18" height="18" className="windows-bar-image" />
+                <p className="windows-bar-text">Auto Terrarium - Login</p>
+                <button className="windows-bar-button">X</button>
+                <button  className="windows-bar-button">?</button>
+              </div>
             </Col>
           </Row>
           <Row>
             <Col>
-              <Form onSubmit={this.handleSubmit}>
-                <Form.Group controlId="username">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter username..."
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                    name="username"
-                  />
-                </Form.Group>
-                <Form.Group controlId="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    type="password"
-                    placeholder="Enter password..."
-                    name="password"
-                  />
-                </Form.Group>
-                <button className="windows-button" type="submit">
-                  Submit
-                </button>
-              </Form>
+              <div className="windows-body">
+                  <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="username">
+                      <Form.Label>Username</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Enter username..."
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                        name="username"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                        type="password"
+                        placeholder="Enter password..."
+                        name="password"
+                      />
+                    </Form.Group>
+                    <button className="windows-button" type="submit">
+                      Submit
+                    </button>
+                  </Form>
+                </div>
             </Col>
           </Row>
         </div>

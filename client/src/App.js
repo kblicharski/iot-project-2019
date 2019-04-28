@@ -19,8 +19,18 @@ For help with routing, go here: https://blog.pshrmn.com/entry/simple-react-route
 
 function App() {
   return (
-    <Container fluid="true"  className="center">
-      <Container className="mainbox">
+    <Container fluid="true"  className="root-container app-container">
+      <div className="windows-mainbox">
+        <Row>
+          <Col>
+            <div className="windows-bar">
+              <img src="http://i63.tinypic.com/117hi0p.png" width="18" height="18" class="windows-bar-image" />
+              <p class="windows-bar-text">Auto Terrarium</p>
+              <button className="windows-bar-button">X</button>
+              <button className="windows-bar-button">?</button>
+            </div>
+          </Col>
+        </Row>
         <Row>
           <Col xs>
             <Header />
@@ -28,16 +38,18 @@ function App() {
         </Row>
         <Row>
           <Col xs>
-            <main>
-              <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/dashboard' component={Dashboard}/>
-                <Route path='/settings' component={Settings}/>
-              </Switch>
-            </main>
+            <div className="windows-body main-body">
+              <main>
+                <Switch>
+                  <Route exact path='/' component={Home}/>
+                  <Route path='/dashboard' component={Dashboard}/>
+                  <Route path='/settings' component={Settings}/>
+                </Switch>
+              </main>
+            </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     </Container>
   );
 }
