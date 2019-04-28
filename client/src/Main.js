@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 
 import Home from './Home';
 import Login from './Login';
+import Dashboard from './Dashboard';
 import Settings from './Settings';
 
 /*
@@ -18,6 +19,7 @@ function Main() {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/login' component={Login}/>
+          <Route path='/dashboard' component={Dashboard}/>
           <Route path='/settings' component={Settings}/>
         </Switch>
       </Col>

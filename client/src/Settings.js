@@ -1,5 +1,11 @@
 import React from 'react';
-import TemperatureForm from './TemperatureForm';
+
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+
+import TemperatureForm from './TemperatureForm'
+import HumidityForm from './HumidityForm'
+import FeedingForm from './FeedingForm'
 
 /*
 A page where the user can choose all the settings for the auto-terrarium system.
@@ -13,8 +19,20 @@ https://github.com/learnetto/react-form-validation-demo
 function Settings() {
   return (
     <div>
-      <h1>Settings</h1>
-      <TemperatureForm />
+      <Row>
+        <h1>Settings</h1>
+      </Row>
+      <Row>
+        <Col sm>
+          <TemperatureForm />
+        </Col>
+        <Col sm>
+          <HumidityForm />
+        </Col>
+        <Col sm>
+          <FeedingForm />
+        </Col>
+      </Row>
     </div>
   )
 }

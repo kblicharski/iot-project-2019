@@ -12,8 +12,8 @@ class TemperatureForm extends React.Component {
       highTemp: '',
       lowTemp: '',
       formErrors: {
-        highTemp: '',
-        lowTemp: '',
+        highTempValid: '',
+        lowTempValid: '',
         bothTemps: '',
       },
       highTempValid: false,
@@ -119,8 +119,8 @@ class TemperatureForm extends React.Component {
         </div>
         <form onSubmit={this.handleSubmit}>
           <h2>Set temperature</h2>
-          <div className={this.errorClass(this.state.formErrors.highTemp)}>
-            <label htmlFor="highTemp">High temp</label>
+          <div className={this.errorClass(this.state.formErrors.highTempValid)}>
+            <label htmlFor="highTemp">High temperature</label>
             <input
               type="number"
               required
@@ -131,8 +131,8 @@ class TemperatureForm extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className={this.errorClass(this.state.formErrors.lowTemp)}>
-          <label htmlFor="password">Password</label>
+          <div className={this.errorClass(this.state.formErrors.lowTempValid)}>
+          <label htmlFor="lowTemp">Low temperature</label>
             <input
               type="number"
               className="form-control"
