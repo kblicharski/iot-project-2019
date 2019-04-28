@@ -41,7 +41,7 @@ function App() {
             <div className="windows-body main-body">
               <main>
                 <Switch>
-                  <Route exact path='/' component={Home}/>
+                  <Route exact path='/' component={Dashboard}/>
                   <Route path='/dashboard' component={Dashboard}/>
                   <Route path='/settings' component={Settings}/>
                 </Switch>

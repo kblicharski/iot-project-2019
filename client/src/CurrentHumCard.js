@@ -55,8 +55,8 @@ class CurrentHumCard extends React.Component {
   render() {
     return (
       <Card>
+        <Card.Header>Current humidity</Card.Header>
         <Card.Body>
-          <Card.Title>Current humidity</Card.Title>
           <Card.Text>
             Current humidity is {this.state.humidity}
           </Card.Text>

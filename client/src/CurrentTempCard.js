@@ -59,8 +59,9 @@ class CurrentTempCard extends React.Component {
   render() {
     return (
       <Card>
+        <Card.Header>Current temperature</Card.Header>
         <Card.Body>
-          <Card.Title>Current temperature</Card.Title>
+          
           <Card.Text>
             Current temp is {this.state.temps}
           </Card.Text>

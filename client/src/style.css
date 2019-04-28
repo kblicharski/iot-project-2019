@@ -81,7 +81,22 @@
   align-items: center;
 }
 
+.card {
+  background-color: #c0c0c0;
+  border-top: 2px solid rgb(211,211,211);
+  border-left: 2px solid rgb(211,211,211);
+  border-right: 2px solid rgb(128,128,128);
+  border-bottom: 2px solid rgb(128,128,128);
+  box-shadow: -1px -1px 0 1px #fff, 1px 1px 0 1px #000;
+  border-radius: 0;
+  margin: 15px;
+}
 
+.card-header {
+  color: white;
+  font-size: 16px;
+  background-image: linear-gradient(to right,#00007F 50%,#999 100%);
+}
 
 img.title{
   float:left;
@@ -122,7 +137,7 @@ p.title{
 }
 
 .main-body {
-  background-color: white;
+  background-color: #C0C0C0;
 }
 
 .header-body {
@@ -176,5 +191,6 @@ p.title{
 
 .title-button {
   background: #ff99cf;
+  background-image: linear-gradient(to right,#ff99cf 50%,#f6ff7a 100%);
   font-size:26px;
 }
