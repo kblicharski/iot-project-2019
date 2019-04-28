@@ -13,3 +13,4 @@ User.create!(name: 'Test', email: 'test@example.com', password: 'test', password
 Config.create!(high_temp: 100, low_temp: 80, high_humidity: 50, low_humidity: 25, crickets_to_feed: 5)
 Light.create!
 HeatLamp.create!
+Humidity.create!(value: 999)

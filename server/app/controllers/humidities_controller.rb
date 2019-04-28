@@ -14,6 +14,10 @@ class HumiditiesController < ApplicationController
     json_response(h, :created)
   end
 
+  def most_recent
+    json_response(Humidity.last)
+  end
+
   private
 
   def humidity_params
