@@ -3,6 +3,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
+import withAuth from './withAuth';
 import TemperatureForm from './TemperatureForm'
 import HumidityForm from './HumidityForm'
 import FeedingForm from './FeedingForm'
@@ -37,4 +38,4 @@ function Settings() {
   )
 }
 
-export default Settings;
+export default withAuth(Settings);

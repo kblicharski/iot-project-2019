@@ -1,5 +1,9 @@
 import React from 'react';
 
+import AuthService from './AuthService'
+
+import history from './history';
+
 function Login() {
   return (
     <div>
@@ -18,7 +22,13 @@ class LoginForm extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.Auth = new AuthService()
   }
+
+  componentWillMount(){
+    if(this.Auth.loggedIn())
+      history.replace('/');
+}
 
   handleChange(event) {
     this.setState({
@@ -27,8 +37,14 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit (event) {
-    console.log('Form value: ' + this.state.username);
     event.preventDefault();
+    this.Auth.login(this.state.username, this.state.password)
+      .then(res => {
+        history.replace('/');
+      })
+      .catch(err => {
+        alert(err);
+      })
   }
 
   render() {
