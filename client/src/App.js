@@ -9,6 +9,7 @@ import withAuth from './withAuth'
 import Header from './Header'
 import Dashboard from './Dashboard';
 import Settings from './Settings';
+import Feeding from './Feeding';
 
 /*
 The entire page (for any given page).
@@ -18,7 +19,7 @@ For help with routing, go here: https://blog.pshrmn.com/entry/simple-react-route
 
 function App() {
   return (
-    <Container fluid="true"  className="root-container app-container">
+    <Container fluid="true"  className="root-container">
       <div className="windows-mainbox">
         <Row>
           <Col>
@@ -43,6 +44,7 @@ function App() {
                   <Route exact path='/' component={Dashboard}/>
                   <Route path='/dashboard' component={Dashboard}/>
                   <Route path='/settings' component={Settings}/>
+                  <Route path='/feeding' component={Feeding}/>
                 </Switch>
               </main>
             </div>

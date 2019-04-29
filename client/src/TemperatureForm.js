@@ -1,5 +1,8 @@
 import React from 'react'
 
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 import AuthService from './AuthService'
 import { FormErrors } from './FormErrors'
 
@@ -154,9 +157,11 @@ class TemperatureForm extends React.Component {
   render() {
     return (
       <>
-        <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
+        <Row>
+          <Col resizable={false}>
+            <FormErrors formErrors={this.state.formErrors} />
+          </Col>
+        </Row>
         <div className="panel panel-default">
           {this.state.message}
         </div>

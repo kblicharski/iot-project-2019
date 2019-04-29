@@ -7,6 +7,7 @@ import CardGroup from 'react-bootstrap/CardGroup'
 import withAuth from './withAuth'
 import CurrentTempCard from './CurrentTempCard'
 import CurrentHumCard from './CurrentHumCard'
+import LastFeedingCard from './LastFeedingCard'
 
 class Dashboard extends React.Component {
   render() {
@@ -18,6 +19,9 @@ class Dashboard extends React.Component {
           </Col>
         </Row>
         <Row>
+          <Col>
+            <LastFeedingCard />
+          </Col>
           <Col>
             <CurrentTempCard />
           </Col>

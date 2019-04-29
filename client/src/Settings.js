@@ -21,7 +21,7 @@ https://github.com/learnetto/react-form-validation-demo
 function Settings() {
   return (
     <div>
-      <Row>
+      <Row className="text-center">
         <Col xs>
           <h1>Settings</h1>
         </Col>
@@ -30,12 +30,18 @@ function Settings() {
         <Col xs>
           <TemperatureForm />
         </Col>
+      </Row>
+      <Row>
         <Col xs>
           <HumidityForm />
         </Col>
+      </Row>
+      <Row>
         <Col xs>
           <FeedingForm />
         </Col>
+      </Row>
+      <Row>
         <Col xs>
           <LightForm />
         </Col>

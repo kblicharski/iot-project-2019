@@ -1,20 +1,20 @@
+body {
+  background-image: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .root-container {
   font-family: "MS Sans Serif";
-  font-size:12px;
+  font-size: 12px;
   position: absolute;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.app-container {
-  background: #87fffd; 
-  background: -moz-linear-gradient(-45deg, #87fffd 0%, #e93cec 100%); 
-  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
-  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87fffd', endColorstr='#e93cec',GradientType=1 );
 }
 
 .login-container {
@@ -209,4 +209,15 @@ p.title{
 
 .less-padding {
   padding: 0px;
+}
+
+h1 {
+  font-size: 20px;
+  color: rgba(10,60,150, 0.8);
+  font-weight: bold;
+  text-shadow: 1px 9px 6px #C0C0C0, 0 0 0 #000, 1px 30px 6px #C0C0C0;
+}
+
+h2 {
+  font-size: 14px;
 }

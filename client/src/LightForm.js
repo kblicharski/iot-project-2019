@@ -111,7 +111,7 @@ class LightForm extends React.Component {
     return(error.length === 0 ? '' : 'has-error')
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     /*
     url: /light_schedule
     post
@@ -120,16 +120,36 @@ class LightForm extends React.Component {
     must be epoch time
     light on button
     */
-  }
+    event.preventDefault();
 
-  checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    } else {
-      let error = new Error(response.statusText)
-      error.response = response
-      throw error
-    }
+    let auth = new AuthService()
+    let url = `${auth.domain}/light_schedule`
+
+    let lights_on = new Date('02/07/2001 ' + this.state.lightOnTime + ':00 GMT')
+    let lights_off = new Date('02/07/2001 ' + this.state.lightOffTime + ':00 GMT')
+
+    return fetch(
+      url, 
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + auth.getToken()
+        },
+        body: JSON.stringify({
+          light_on_time: lights_on.valueOf(),
+          light_off_time: lights_off.valueOf(),
+        }),
+      }
+    )
+      .then(auth.checkStatus)
+      .then(response => response.json())
+      .then((responseJson) => {
+        this.setState({
+          message: "submitted"
+        })
+      })
   }
 
   onLightOnTimeChange(val) {
