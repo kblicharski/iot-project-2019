@@ -39,8 +39,12 @@ class DoorsController < ApplicationController
     json_response(@door)
   end
 
+  def active_feeding
+    json_response(Door.where(status: 'feeding').last)
+  end
+
   def most_recent_feeding
-    json_response(Door.last)
+    json_response(Door.where.not(status: 'feeding').last)
   end
 
   def all_feedings

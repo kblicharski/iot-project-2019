@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_191013) do
+ActiveRecord::Schema.define(version: 2019_04_29_042911) do
 
   create_table "configs", force: :cascade do |t|
     t.float "high_temp"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_04_28_191013) do
     t.boolean "open", default: true
     t.integer "crickets_fed", default: 0
     t.string "status", default: "feeding"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "heat_lamps", force: :cascade do |t|
