@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'door/close', to: 'doors#close', as: :close
   get 'door/feed', to: 'doors#cricket_fed', as: :cricket_fed
   get 'most_recent_feeding', to: 'doors#most_recent_feeding', as: :most_recent_feeding
+  get 'all_feedings', to: 'doors#all_feedings', as: :all_feedings
+  post 'light_schedule', to: 'lamps#set_light_schedule', as: :set_light_schedule
 end

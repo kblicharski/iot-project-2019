@@ -13,4 +13,10 @@ class LampsController < ApplicationController
     json_response(l, :updated)
   end
 
+  def set_light_schedule
+    c = Config.first
+    c.update_attributes!(light_on_time: params[:light_on_time], light_off_time: params[:light_off_time])
+    c.save!
+  end
+
 end
