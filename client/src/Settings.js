@@ -7,6 +7,7 @@ import withAuth from './withAuth';
 import TemperatureForm from './TemperatureForm'
 import HumidityForm from './HumidityForm'
 import FeedingForm from './FeedingForm'
+import LightForm from './LightForm'
 
 /*
 A page where the user can choose all the settings for the auto-terrarium system.
@@ -34,6 +35,9 @@ function Settings() {
         </Col>
         <Col xs>
           <FeedingForm />
+        </Col>
+        <Col xs>
+          <LightForm />
         </Col>
       </Row>
     </div>

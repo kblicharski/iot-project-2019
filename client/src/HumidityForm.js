@@ -134,7 +134,7 @@ class HumidityForm extends React.Component {
         }),
       }
     )
-      .then(this.checkStatus)
+      .then(auth.checkStatus)
       .then(response => response.json())
       .then((responseJson) => {
         this.setState({

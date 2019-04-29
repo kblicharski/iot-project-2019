@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col'
 
 import withAuth from './withAuth'
 import Header from './Header'
-import Home from './Home';
 import Dashboard from './Dashboard';
 import Settings from './Settings';
 

@@ -9,7 +9,7 @@ class CurrentHumCard extends React.Component {
     super(props)
     this.state = {
       humidity: '',
-      updated_at: ''
+      created_at: ''
     }
     this.componentDidMount= this.componentDidMount.bind(this)
   }
@@ -29,40 +29,30 @@ class CurrentHumCard extends React.Component {
         }
       }
     )
-      .then(this.checkStatus)
+      .then(auth.checkStatus)
       .then(results => results.json())
       .then((responseJson) => {
-        console.log(responseJson)
-
-        let date = (new Date(responseJson['updated_at'])).toLocaleTimeString()
         this.setState({
           humidity: responseJson['value'],
-          updated_at: date
+          created_at: (new Date(responseJson['created_at'])).toLocaleString('en-US', { hour12: true })
         })
       })
-  }
-
-  checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    } else {
-      let error = new Error(response.statusText)
-      error.response = response
-      throw error
-    }
   }
 
   render() {
     return (
       <Card>
-        <Card.Header>Current humidity</Card.Header>
+        <Card.Header>Humidity</Card.Header>
         <Card.Body>
-          <Card.Text>
-            Current humidity is {this.state.humidity}
+          <Card.Text className="text-center">
+            The most recent humidity reading is:
+            <div className="reading-text">
+              {this.state.humidity}
+            </div>
           </Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Updated at {this.state.updated_at}</small>
+        <Card.Footer className="footer-text">
+          Last updated at {this.state.created_at}
         </Card.Footer>
       </Card>
     )

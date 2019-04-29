@@ -1,15 +1,19 @@
 import React from 'react';
 
 import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 import AuthService from './AuthService'
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 class CurrentTempCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      temps: '',
-      updated_at: '',
+      temp1: '',
+      temp1CreatedAt: '',
+      temp2: '',
+      temp2CreatedAt: '',
     }
     this.componentDidMount= this.componentDidMount.bind(this)
   }
@@ -29,46 +33,50 @@ class CurrentTempCard extends React.Component {
         }
       }
     )
-      .then(this.checkStatus)
+      .then(auth.checkStatus)
       .then(results => results.json())
       .then((responseJson) => {
-        console.log(responseJson)
-        let arrayLength = responseJson.length;
-        let temps = ''
-        for (let i = 0; i < arrayLength; i++) {
-          temps += responseJson[i]['value']
+        let newState = {}
+        for (let i = 0; i < responseJson.length; i++) {
+          newState[('temp' + (i+1).toString())] = responseJson[i]['value']
+          newState[('temp' + (i+1).toString() + 'CreatedAt')] = (new Date(responseJson[i]['created_at'])).toLocaleString('en-US', { hour12: true })
         }
-        let date = (new Date(responseJson[0]['created_at'])).toLocaleTimeString()
-        this.setState({
-          temps: temps,
-          updated_at: date
-        })
+        this.setState(newState)
       })
-  }
-
-  checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    } else {
-      let error = new Error(response.statusText)
-      error.response = response
-      throw error
-    }
   }
 
   render() {
     return (
       <Card>
-        <Card.Header>Current temperature</Card.Header>
-        <Card.Body>
-          
-          <Card.Text>
-            Current temp is {this.state.temps}
-          </Card.Text>
+        <Card.Header>Temperature</Card.Header>
+        <Card.Body className="text-center less-padding">
+          <Card>
+            <Card.Header>Sensor 1</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <div className="reading-text">
+                  {this.state.temp1}°F
+                </div>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer className="footer-text">
+              Last updated at {this.state.temp1CreatedAt}
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Header>Sensor 2</Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <div className="reading-text">
+                  {this.state.temp2}°F
+                </div>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer className="footer-text">
+              Last updated at {this.state.temp2CreatedAt}
+            </Card.Footer>
+          </Card>
         </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Updated at {this.state.updated_at}</small>
-        </Card.Footer>
       </Card>
     )
   }

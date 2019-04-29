@@ -19,10 +19,10 @@ class Dashboard extends React.Component {
         </Row>
         <Row>
           <Col>
-            <CardGroup>
-              <CurrentTempCard />
-              <CurrentHumCard />
-            </CardGroup>
+            <CurrentTempCard />
+          </Col>
+          <Col>
+            <CurrentHumCard />
           </Col>
         </Row>
       </div>

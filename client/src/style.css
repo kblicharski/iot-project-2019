@@ -1,6 +1,6 @@
 .root-container {
   font-family: "MS Sans Serif";
-  font-size:11px;
+  font-size:12px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -162,9 +162,7 @@ p.title{
   border-radius: 0 !important;
 }
 
-.form-label {
-  font-size: 14px;
-}
+
 
 .windows-button {
   font-family:"MS Sans Serif";
@@ -193,4 +191,22 @@ p.title{
   background: #ff99cf;
   background-image: linear-gradient(to right,#ff99cf 50%,#f6ff7a 100%);
   font-size:26px;
+}
+
+.reading-text {
+  font-size: 18px;
+  outline:1px solid #000000;
+  background:#ec99ff;
+  border-width:1px;
+  border-style:solid;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  margin-top: 5%;
+}
+
+.footer-text {
+  font-size: 11px;
+}
+
+.less-padding {
+  padding: 0px;
 }
