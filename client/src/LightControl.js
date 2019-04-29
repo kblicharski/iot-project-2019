@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 import AuthService from './AuthService'
 import withAuth from './withAuth';
 
-class Feeding extends React.Component {
+class LightControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,20 +46,28 @@ class Feeding extends React.Component {
 
   render() {
     return(
-      <Card>
-        <Card.Header>Start a feeding</Card.Header>
-        <Card.Body>
-          <Card.Text className="text-center">
-            <p>The current amount of crickets per feed is: {this.state.crickets_per_feed}</p>
+      <>
+        <Row className="text-center">
+          <Col xs>
+            <h1>Light control</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs>
+            <p>Turn the light on and off.</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             {this.state.message}
             <form onSubmit={this.handleSubmit}>
-              <button type="submit" className="windows-button">Start a feed</button>
+              <button type="submit" className="windows-button">Switch light</button>
             </form>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+          </Col>
+        </Row>
+      </>
     )
   }
 }
 
-export default withAuth(Feeding)
+export default withAuth(LightControl)
