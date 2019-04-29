@@ -24,6 +24,7 @@ class Header extends React.Component {
       <header>
         <div className="header-body">
           <Navbar expand="lg">
+            <Navbar.Brand><img src="https://dumielauxepices.net/sites/default/files/lizard-clipart-realistic-667937-3041925.gif" width="60" height="60" class="windows-bar-image" /></Navbar.Brand>
             <Navbar.Brand><Link to='/'><button className="windows-button title-button">Auto Terrarium</button></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

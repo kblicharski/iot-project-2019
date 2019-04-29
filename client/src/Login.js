@@ -51,8 +51,8 @@ class Login extends React.Component {
           <Row>
             <Col>
               <div class="windows-bar">
-                <img src="http://i63.tinypic.com/117hi0p.png" width="18" height="18" className="windows-bar-image" />
-                <p className="windows-bar-text">Auto Terrarium - Login</p>
+                <img src="http://i63.tinypic.com/117hi0p.png" width="30" height="30" className="windows-bar-image" />
+                <p className="windows-bar-text">Auto Terrarium - Log...</p>
                 <button className="windows-bar-button">X</button>
                 <button  className="windows-bar-button">?</button>
               </div>

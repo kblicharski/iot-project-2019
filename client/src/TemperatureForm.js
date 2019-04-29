@@ -6,9 +6,9 @@ import Col from 'react-bootstrap/Col'
 import AuthService from './AuthService'
 import { FormErrors } from './FormErrors'
 
-const TEMP_MIN = 20 // 68 F
-const TEMP_MAX = 40 // 104 F
-const MIN_TEMP_RANGE = 5 // range of 9 F
+const TEMP_MIN = 68
+const TEMP_MAX = 104 
+const MIN_TEMP_RANGE = 10
 
 class TemperatureForm extends React.Component {
   constructor(props) {

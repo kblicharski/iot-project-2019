@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
 import AuthService from './AuthService'
@@ -35,6 +36,7 @@ class LastFeedingCard extends React.Component {
       .then((responseJson) => {
         console.log(responseJson)
         this.setState({
+          created_at: (new Date(responseJson['created_at'])).toLocaleString('en-US', { hour12: true }),
           cricketsFed: responseJson['crickets_fed'],
           status: responseJson['status']
         })
@@ -47,10 +49,17 @@ class LastFeedingCard extends React.Component {
         <Card.Header>Feeding</Card.Header>
         <Card.Body>
           <Card.Text className="text-center">
-            The most recent feeding is:
+            <p>Data for the most recent feeding</p>
             <div className="reading-text">
-              {this.state.cricketsFed}
-              {this.state.status}
+              Crickets fed: {this.state.cricketsFed}
+            </div>
+            <div className="reading-text">
+              Status: {this.state.status}
+            </div>
+            <div>
+              <button className="windows-button">
+              <Link to='/feeding_history'><button className="windows-button header-button">See more feeding history</button></Link>
+              </button>
             </div>
           </Card.Text>
         </Card.Body>

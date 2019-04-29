@@ -1,18 +1,29 @@
 import React from 'react';
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 import withAuth from './withAuth';
 import AuthService from './AuthService'
 
-const data = [{name: 'Page A', uv: 400}, {name: 'Page B', uv: 500}];
-
 class Graphs extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+    this.componentDidMount = this.componentDidMount.bind(this)
+  }
+
   componentDidMount() {
     let auth = new AuthService()
-    let url = `${auth.domain}/temperatures/most_recent`
+
+    let end = new Date()
+    let start = new Date();
+    start.setHours(end.getHours()-1.5)
+
+    let url = `${auth.domain}/temperatures/?start=${start.valueOf()}&ending=${end.valueOf()}`
 
     fetch(
       url,
@@ -28,12 +39,10 @@ class Graphs extends React.Component {
       .then(auth.checkStatus)
       .then(results => results.json())
       .then((responseJson) => {
-        let newState = {}
-        for (let i = 0; i < responseJson.length; i++) {
-          newState[('temp' + (i+1).toString())] = responseJson[i]['value']
-          newState[('temp' + (i+1).toString() + 'CreatedAt')] = (new Date(responseJson[i]['created_at'])).toLocaleString('en-US', { hour12: true })
-        }
-        this.setState(newState)
+        console.log(responseJson)
+        this.setState({
+          data: responseJson
+        })
       })
   }
   
@@ -41,11 +50,12 @@ class Graphs extends React.Component {
     return(
       <Row>
         <Col xs>
-          <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+          <LineChart width={900} height={500} data={this.state.data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+            <Line type="monotone" dataKey="value" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="created-at" />
             <YAxis />
+            <Tooltip />
           </LineChart>
         </Col>
       </Row>

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Card from 'react-bootstrap/Card'
 
 import AuthService from './AuthService'
 import withAuth from './withAuth';
@@ -10,16 +9,20 @@ class LightControl extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      crickets_per_feed: 0,
+      selection: 'turnOn',
       message: '',
     }
+    this.handleOptionChange = this.handleOptionChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
     let auth = new AuthService()
-    let url = `${auth.domain}/`
+    let url = `${auth.domain}/light`
+
+    let lightVal = (this.state.selection === 'turnOn') ? true : false
 
     return fetch(
       url, 
@@ -31,8 +34,8 @@ class LightControl extends React.Component {
           'Authorization': 'Bearer ' + auth.getToken()
         },
         body: JSON.stringify({
-          test: {}
-        }),
+          on: lightVal.toString()
+        })
       }
     )
       .then(auth.checkStatus)
@@ -44,28 +47,43 @@ class LightControl extends React.Component {
       })
   }
 
+  handleOptionChange(event) {
+    this.setState(
+      {selection: event.target.value},
+    )
+  }
+
   render() {
     return(
-      <>
-        <Row className="text-center">
-          <Col xs>
-            <h1>Light control</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs>
-            <p>Turn the light on and off.</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+      <Card>
+        <Card.Header>Control light</Card.Header>
+        <Card.Body>
+          <Card.Text className="text-center">
             {this.state.message}
             <form onSubmit={this.handleSubmit}>
-              <button type="submit" className="windows-button">Switch light</button>
+              <label>
+                <input
+                  type="radio"
+                  value="turnOn"
+                  checked={this.state.selection === 'turnOn'}
+                  onChange={this.handleOptionChange}
+                />
+                Turn on
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="turnOff"
+                  checked={this.state.selection === 'turnOff'}
+                  onChange={this.handleOptionChange}
+                />
+                Turn off
+              </label>
+              <button type="submit" className="windows-button">Set light state</button>
             </form>
-          </Col>
-        </Row>
-      </>
+          </Card.Text>
+        </Card.Body>
+      </Card>
     )
   }
 }

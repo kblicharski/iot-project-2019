@@ -11,6 +11,7 @@ import Dashboard from './Dashboard';
 import Settings from './Settings';
 import Controls from './Controls'
 import Graphs from './Graphs'
+import FeedingHistory from './FeedingHistory'
 
 /*
 The entire page (for any given page).
@@ -25,7 +26,7 @@ function App() {
         <Row>
           <Col xs>
             <div className="windows-bar">
-              <img src="http://i63.tinypic.com/117hi0p.png" width="18" height="18" class="windows-bar-image" />
+              <img src="http://i63.tinypic.com/117hi0p.png" width="30" height="30" class="windows-bar-image" />
               <p class="windows-bar-text">Auto Terrarium</p>
               <button className="windows-bar-button">X</button>
               <button className="windows-bar-button">?</button>
@@ -47,6 +48,7 @@ function App() {
                   <Route path='/settings' component={Settings}/>
                   <Route path='/controls' component={Controls}/>
                   <Route path='/graphs' component={Graphs}/>
+                  <Route path='/feeding_history' component={FeedingHistory}/>
                 </Switch>
               </main>
             </div>

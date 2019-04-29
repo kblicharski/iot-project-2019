@@ -15,7 +15,8 @@ class Dashboard extends React.Component {
       <div>
         <Row>
           <Col>
-            <h1>Dashboard</h1>
+            <h3>Current stats</h3>
+            <hr />
           </Col>
         </Row>
         <Row>
