@@ -1,3 +1,12 @@
+/*
+
+https://codepen.io/supember/pen/BKmgNZ
+https://codepen.io/era_eric_og/pen/apbVpN?editors=1100
+https://github.com/liyuanzi/bootstrap-theme-Win95/blob/master/bootstrap-theme-win95.css
+https://liyuanzi.github.io/bootstrap-theme-Win95/demo.html#
+
+*/
+
 body {
   background-image: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
   height: 100%;
@@ -15,6 +24,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.app-container {
+  margin-top: 25px;
 }
 
 .login-container {

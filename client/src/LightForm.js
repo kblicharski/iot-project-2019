@@ -101,7 +101,6 @@ class LightForm extends React.Component {
   }
 
   validateForm() {
-    console.log(this.state.bothTimesValid)
     this.setState({
       formValid: this.state.lightOffTimeValid && this.state.lightOnTimeValid && this.state.bothTimesValid
     })
@@ -139,8 +138,8 @@ class LightForm extends React.Component {
         },
         body: JSON.stringify({
           light_on_time: lights_on.valueOf(),
-          light_off_time: lights_off.valueOf(),
-        }),
+          light_off_time: lights_off.valueOf()
+        })
       }
     )
       .then(auth.checkStatus)
@@ -153,7 +152,6 @@ class LightForm extends React.Component {
   }
 
   onLightOnTimeChange(val) {
-    alert(val)
     this.setState(
       {'lightOnTime': val},
       () => { this.validateField('lightOnTime', val) }
@@ -161,7 +159,6 @@ class LightForm extends React.Component {
   }
 
   onLightOffTimeChange(val) {
-    alert(val)
     this.setState(
       {'lightOffTime': val},
       () => { this.validateField('lightOffTime', val) }

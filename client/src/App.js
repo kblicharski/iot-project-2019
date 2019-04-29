@@ -9,7 +9,8 @@ import withAuth from './withAuth'
 import Header from './Header'
 import Dashboard from './Dashboard';
 import Settings from './Settings';
-import Feeding from './Feeding';
+import Controls from './Controls'
+import Graphs from './Graphs'
 
 /*
 The entire page (for any given page).
@@ -20,9 +21,9 @@ For help with routing, go here: https://blog.pshrmn.com/entry/simple-react-route
 function App() {
   return (
     <Container fluid="true"  className="root-container">
-      <div className="windows-mainbox">
+      <Container className="windows-mainbox">
         <Row>
-          <Col>
+          <Col xs>
             <div className="windows-bar">
               <img src="http://i63.tinypic.com/117hi0p.png" width="18" height="18" class="windows-bar-image" />
               <p class="windows-bar-text">Auto Terrarium</p>
@@ -44,13 +45,14 @@ function App() {
                   <Route exact path='/' component={Dashboard}/>
                   <Route path='/dashboard' component={Dashboard}/>
                   <Route path='/settings' component={Settings}/>
-                  <Route path='/feeding' component={Feeding}/>
+                  <Route path='/controls' component={Controls}/>
+                  <Route path='/graphs' component={Graphs}/>
                 </Switch>
               </main>
             </div>
           </Col>
         </Row>
-      </div>
+      </Container>
     </Container>
   );
 }
