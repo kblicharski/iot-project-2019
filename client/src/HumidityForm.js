@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Col from 'react-bootstrap/Col'
+
 import AuthService from './AuthService'
 import { FormErrors } from './FormErrors';
 
@@ -138,7 +140,7 @@ class HumidityForm extends React.Component {
       .then(response => response.json())
       .then((responseJson) => {
         this.setState({
-          message: "submitted"
+          message: "Submitted!"
         })
       })
   }
@@ -156,13 +158,15 @@ class HumidityForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Set humidity</h2>
-        <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
-        <div className="panel panel-default">
-          {this.state.message}
-        </div>
+        <Col className="text-center">
+            <h3>Set humidity</h3>
+            <div className="panel panel-default message">
+              <b>{this.state.message}</b>
+            </div>
+          </Col>
+          <div className="panel panel-default reading-text reading-smaller">
+            <FormErrors formErrors={this.state.formErrors} />
+          </div>
         <div className={'form-group ${this.errorClass(this.state.formErrors.highHum)}'}>
           <label htmlFor="highHum">High Humidity</label>
           <input

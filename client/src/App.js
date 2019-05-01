@@ -21,7 +21,7 @@ For help with routing, go here: https://blog.pshrmn.com/entry/simple-react-route
 
 function App() {
   return (
-    <Container fluid="true"  className="root-container">
+    <Container fluid="true"  className="root-container app-container">
       <Container className="windows-mainbox">
         <Row>
           <Col xs>

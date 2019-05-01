@@ -5,20 +5,21 @@ import Card from 'react-bootstrap/Card'
 
 import AuthService from './AuthService'
 
-class LastFeedingCard extends React.Component {
+class CurrentFeedingCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       cricketsFed: '',
       status: '',
       created_at: '',
+      has_active: false,
     }
     this.componentDidMount= this.componentDidMount.bind(this)
   }
   
   componentDidMount() {
     let auth = new AuthService()
-    let url = `${auth.domain}/most_recent_feeding`
+    let url = `${auth.domain}/active_feeding`
 
     fetch(
       url,
@@ -34,30 +35,43 @@ class LastFeedingCard extends React.Component {
       .then(auth.checkStatus)
       .then(results => results.json())
       .then((responseJson) => {
-        console.log(responseJson)
-        this.setState({
-          created_at: (new Date(responseJson['created_at'])).toLocaleString('en-US', { hour12: true }),
-          cricketsFed: responseJson['crickets_fed'],
-          status: responseJson['status']
-        })
+        if (responseJson === null) {
+          this.setState({
+            has_active: false,
+          })
+        } else {
+          this.setState({
+            created_at: (new Date(responseJson['created_at'])).toLocaleString('en-US', { hour12: true }),
+            cricketsFed: responseJson['crickets_fed'],
+            status: responseJson['status'],
+            has_active: true,
+          })
+        }
       })
   }
 
   render() {
+    let content
+    if (this.state.has_active) {
+      content = <>
+        Active feeding
+        <div className="reading-text">
+          Crickets fed: {this.state.cricketsFed}
+        </div>
+        <div className="reading-text">
+          Status: {this.state.status}
+        </div>
+      </>
+    } else {
+      content = <>No active feeding currently.</>
+    }
+
     return (
       <Card>
         <Card.Header><i class="fas fa-bug"></i> Latest Feeding</Card.Header>
         <Card.Body>
           <Card.Text className="text-center">
-            <div className="reading-text">
-              Crickets fed: {this.state.cricketsFed}
-            </div>
-            <div className="reading-text">
-              Status: {this.state.status}
-            </div>
-            <div className="test">
-              <button className="windows-button smaller-button"><Link to='/feeding_history'>Feeding history</Link></button>
-            </div>
+           {content}
           </Card.Text>
         </Card.Body>
         <Card.Footer className="footer-text">
@@ -68,4 +82,4 @@ class LastFeedingCard extends React.Component {
   }
 }
 
-export default LastFeedingCard
+export default CurrentFeedingCard

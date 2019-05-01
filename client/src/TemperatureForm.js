@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import AuthService from './AuthService'
@@ -139,7 +138,7 @@ class TemperatureForm extends React.Component {
       .then(response => response.json())
       .then((responseJson) => {
         this.setState({
-          message: "submitted"
+          message: "Submitted!"
         })
       })
   }
@@ -156,17 +155,16 @@ class TemperatureForm extends React.Component {
 
   render() {
     return (
-      <>
-        <Row>
-          <Col resizable={false}>
-            <FormErrors formErrors={this.state.formErrors} />
-          </Col>
-        </Row>
-        <div className="panel panel-default">
-          {this.state.message}
-        </div>
         <form onSubmit={this.handleSubmit}>
-          <h2>Set temperature</h2>
+          <Col className="text-center">
+            <h3>Set temperature</h3>
+            <div className="panel panel-default message">
+              <b>{this.state.message}</b>
+            </div>
+          </Col>
+          <div className="panel panel-default reading-text reading-smaller">
+            <FormErrors formErrors={this.state.formErrors} />
+          </div>
           <div className={this.errorClass(this.state.formErrors.highTempValid)}>
             <label htmlFor="highTemp">High temperature</label>
             <input
@@ -192,7 +190,6 @@ class TemperatureForm extends React.Component {
           </div>
           <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
       </form>
-    </>
     )
   }
 }

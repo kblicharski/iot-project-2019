@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Col from 'react-bootstrap/Col'
+
 import AuthService from './AuthService'
 import { FormErrors } from './FormErrors';
 
@@ -96,7 +98,7 @@ class FeedingForm extends React.Component {
       .then(response => response.json())
       .then((responseJson) => {
         this.setState({
-          message: "submitted"
+          message: "Submitted!"
         })
       })
   }
@@ -113,30 +115,30 @@ class FeedingForm extends React.Component {
   
   render() {
     return (
-      <>
-        <div className="panel panel-default">
+      <form onSubmit={this.handleSubmit}>
+        <Col className="text-center">
+          <h3>Feeding options</h3>
+          <div className="panel panel-default message">
+            <b>{this.state.message}</b>
+          </div>
+        </Col>
+        <div className="panel panel-default reading-text reading-smaller">
           <FormErrors formErrors={this.state.formErrors} />
         </div>
-        <div className="panel panel-default">
-          {this.state.message}
+        <div className={this.errorClass(this.state.formErrors.cricketsPerFeed)}>
+          <label htmlFor="cricketsPerFeed">Crickets per feed</label>
+          <input
+            type="number"
+            required
+            className="form-control"
+            name="cricketsPerFeed"
+            placeholder=""
+            value={this.state.cricketsPerFeed}
+            onChange={this.handleChange}
+          />
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <h2>Feeding options</h2>
-          <div className={this.errorClass(this.state.formErrors.cricketsPerFeed)}>
-            <label htmlFor="cricketsPerFeed">Crickets per feed</label>
-            <input
-              type="number"
-              required
-              className="form-control"
-              name="cricketsPerFeed"
-              placeholder=""
-              value={this.state.cricketsPerFeed}
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
-        </form>
-      </>
+        <button type="submit" className="windows-button top-margin" disabled={!this.state.formValid}>Submit</button>
+      </form>
     )
   }
 }

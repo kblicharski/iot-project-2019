@@ -1,6 +1,7 @@
 import React from 'react';
 import TimePicker from 'react-time-picker';
-import TimeInput from 'react-time-input';
+
+import Col from 'react-bootstrap/Col'
 
 import AuthService from './AuthService'
 import { FormErrors } from './FormErrors';
@@ -124,8 +125,12 @@ class LightForm extends React.Component {
     let auth = new AuthService()
     let url = `${auth.domain}/light_schedule`
 
-    let lights_on = new Date('02/07/2001 ' + this.state.lightOnTime + ':00 GMT')
-    let lights_off = new Date('02/07/2001 ' + this.state.lightOffTime + ':00 GMT')
+    let lights_on = new Date('02/07/2001 ' + this.state.lightOnTime + ':00 CDT')
+    let lights_off = new Date('02/07/2001 ' + this.state.lightOffTime + ':00 CDT')
+
+    console.log(lights_on)
+    console.log(lights_off)
+    console.log(lights_off.valueOf())
 
     return fetch(
       url, 
@@ -138,17 +143,12 @@ class LightForm extends React.Component {
         },
         body: JSON.stringify({
           light_on_time: lights_on.valueOf(),
-          light_off_time: lights_off.valueOf()
-        })
+          light_off_time: lights_off.valueOf(),
+      })
       }
     )
       .then(auth.checkStatus)
-      .then(response => response.json())
-      .then((responseJson) => {
-        this.setState({
-          message: "submitted"
-        })
-      })
+
   }
 
   onLightOnTimeChange(val) {
@@ -168,15 +168,18 @@ class LightForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h2>Light timing</h2>
-        <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
-        <div className="panel panel-default">
-          {this.state.message}
-        </div>
+        <Col className="text-center">
+            <h3>Light schedule</h3>
+            <div className="panel panel-default message">
+              <b>{this.state.message}</b>
+            </div>
+          
+          <div className="panel panel-default reading-text reading-smaller">
+            <FormErrors formErrors={this.state.formErrors} />
+          </div>
         <div className="form-group">
-          Light on time
+          Light on time:
+
           <TimePicker
             onChange={this.onLightOnTimeChange}
             value={this.state.lightOnTime}
@@ -185,7 +188,8 @@ class LightForm extends React.Component {
           />
         </div>
         <div className="form-group">
-          Light off time
+          Light off time:
+          
           <TimePicker
             onChange={this.onLightOffTimeChange}
             value={this.state.lightOffTime}
@@ -193,7 +197,8 @@ class LightForm extends React.Component {
             clearIcon={null}
           />
         </div>
-        <button type="submit" className="windows-button" disabled={!this.state.formValid}>Submit</button>
+        <button type="submit" className="windows-button top-margin" disabled={!this.state.formValid}>Submit</button>
+        </Col>
       </form>
     )
   }

@@ -46,7 +46,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Container fluid="true"  className="root-container login-container">
+      <div class="jumbotron vertical-center login-container">
         <div className="windows-mainbox">
           <Row>
             <Col>
@@ -83,14 +83,14 @@ class Login extends React.Component {
                       />
                     </Form.Group>
                     <button className="windows-button" type="submit">
-                      Submit
+                      Log in
                     </button>
                   </Form>
                 </div>
             </Col>
           </Row>
         </div>
-      </Container>
+      </div>
     )
   }
 }

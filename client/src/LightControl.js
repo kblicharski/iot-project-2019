@@ -42,7 +42,7 @@ class LightControl extends React.Component {
       .then(response => response.json())
       .then((responseJson) => {
         this.setState({
-          message: "feed started"
+          message: "Light changed"
         })
       })
   }
@@ -59,7 +59,9 @@ class LightControl extends React.Component {
         <Card.Header>Control light</Card.Header>
         <Card.Body>
           <Card.Text className="text-center">
-            {this.state.message}
+          <div className="message">
+              <b>{this.state.message}</b>
+            </div>
             <form onSubmit={this.handleSubmit}>
               <label>
                 <input

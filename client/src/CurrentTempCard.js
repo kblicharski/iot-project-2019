@@ -1,10 +1,8 @@
 import React from 'react';
 
 import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
 
 import AuthService from './AuthService'
-import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 class CurrentTempCard extends React.Component {
   constructor(props) {
@@ -48,12 +46,12 @@ class CurrentTempCard extends React.Component {
   render() {
     return (
       <Card>
-        <Card.Header>Temperature</Card.Header>
-        <Card.Body className="text-center less-padding">
+        <Card.Header><i class="fas fa-thermometer-half"></i> Temperature</Card.Header>
+        <Card.Body>
           <Card>
-            <Card.Header>Sensor 1</Card.Header>
+            <Card.Header className="card-header-small">Sensor 1</Card.Header>
             <Card.Body>
-              <Card.Text>
+              <Card.Text className="text-center">
                 <div className="reading-text">
                   {this.state.temp1}°F
                 </div>
@@ -64,9 +62,9 @@ class CurrentTempCard extends React.Component {
             </Card.Footer>
           </Card>
           <Card>
-            <Card.Header>Sensor 2</Card.Header>
+            <Card.Header className="card-header-small">Sensor 2</Card.Header>
             <Card.Body>
-              <Card.Text>
+              <Card.Text className="text-center">
                 <div className="reading-text">
                   {this.state.temp2}°F
                 </div>

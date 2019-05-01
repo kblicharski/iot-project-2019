@@ -53,8 +53,8 @@ class Graphs extends React.Component {
           <LineChart width={900} height={500} data={this.state.data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
             <Line type="monotone" dataKey="value" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-            <XAxis dataKey="created-at" />
-            <YAxis />
+            <XAxis dataKey="created-at" minTickGap="25"/>
+            <YAxis domain={['dataMin-1', 'dataMax+1']} />
             <Tooltip />
           </LineChart>
         </Col>

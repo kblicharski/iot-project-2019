@@ -7,6 +7,54 @@ https://liyuanzi.github.io/bootstrap-theme-Win95/demo.html#
 
 */
 
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh; /* You might also want to use
+                        'height' property instead.
+                        
+                        Note that for percentage values of
+                        'height' or 'min-height' properties,
+                        the 'height' of the parent element
+                        should be specified explicitly.
+  
+                        In this case the parent of '.vertical-center'
+                        is the <body> element */
+
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+  
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+  
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+  height: 100%;
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+  
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}
+
+
+html,
+body {
+  height: 100%
+}
+
 body {
   background-image: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
   height: 100%;
@@ -27,13 +75,14 @@ body {
 
 .app-container {
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .login-container {
-  background: #ff147d; 
-  background: -moz-linear-gradient(-45deg, #ff147d 0%, #9aff42 100%); 
-  background: -webkit-linear-gradient(-45deg, #ff147d 0%,#9aff42 100%); 
-  background: linear-gradient(135deg, #ff147d 0%,#9aff42 100%); 
+  background: #87fffd; 
+  background: -moz-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
+  background: -webkit-linear-gradient(-45deg, #87fffd 0%,#e93cec 100%); 
+  background: linear-gradient(135deg, #87fffd 0%,#e93cec 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff147d', endColorstr='#9aff42',GradientType=1 );
 }
 
@@ -101,13 +150,33 @@ body {
   border-bottom: 2px solid rgb(128,128,128);
   box-shadow: -1px -1px 0 1px #fff, 1px 1px 0 1px #000;
   border-radius: 0;
-  margin: 15px;
+  margin-top: 12.5px;
+  margin-bottom: 12.5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .card-header {
   color: white;
   font-size: 16px;
   background-image: linear-gradient(to right,#712da8 50%,#999 100%);
+  padding: 10px;
+}
+
+.card-header-small {
+  color: white;
+  font-size: 14px;
+  background-image: linear-gradient(to right,#49bb95 50%,#999 100%);
+  padding: 5px;
+}
+
+.card-body {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.card-footer {
+  background: #b6b6b6; 
 }
 
 img.title{
@@ -187,6 +256,16 @@ p.title{
   bottom:0px;
 }
 
+.smaller-button {
+  margin-top: 10px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+bottom-margin {
+  margin-bottom: 10px;
+}
+
 .header-button {
   background: #81ff7a;
 }
@@ -211,6 +290,10 @@ p.title{
   color: white;
   font-family: monospace;
   font-size: 14px;
+  width: 45%;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .footer-text {
@@ -233,4 +316,17 @@ hr {
 
 h2 {
   font-size: 14px;
+}
+
+.reading-smaller {
+  font-size: 11px;
+}
+
+.message {
+  font-size: 14px;
+  color: green;
+}
+
+.top-margin {
+  margin-top: 10px;
 }
