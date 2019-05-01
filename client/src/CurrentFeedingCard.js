@@ -68,7 +68,7 @@ class CurrentFeedingCard extends React.Component {
 
     return (
       <Card>
-        <Card.Header><i class="fas fa-bug"></i> Latest Feeding</Card.Header>
+        <Card.Header><i class="fas fa-bug"></i> Active Feeding</Card.Header>
         <Card.Body>
           <Card.Text className="text-center">
            {content}
