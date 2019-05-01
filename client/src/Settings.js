@@ -90,7 +90,7 @@ class Settings extends React.Component {
                   <li>Low temperature: {this.state.lowTemp}</li>
                   <li>High humidity: {this.state.highHum}</li>
                   <li>Low humidity: {this.state.lowHum}</li>
-                  <li>Crickets to feed: {this.state.crickets_to_feed}</li>
+                  <li>Crickets to feed: {this.state.cricketsToFeed}</li>
                   <li>Light on time: {this.state.lightOnTime}</li>
                   <li>Light off time: {this.state.lightOffTime}</li>
                 </ul>

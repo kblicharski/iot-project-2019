@@ -7,7 +7,7 @@ import { FormErrors } from './FormErrors';
 
 // All in percentages
 const HUM_MAX = 95
-const HUM_MIN = 50
+const HUM_MIN = 20
 const MIN_HUM_RANGE = 10
 
 class HumidityForm extends React.Component {
