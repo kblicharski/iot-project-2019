@@ -24,11 +24,11 @@ class Dashboard extends React.Component {
           <Col>
             <CurrentFeedingCard />
             <LastFeedingCard />
-            <LightCard />
+            <CurrentHumCard />
           </Col>
           <Col>
+            <LightCard />
             <CurrentTempCard />
-            <CurrentHumCard />
           </Col>
         </Row>
       </div>
