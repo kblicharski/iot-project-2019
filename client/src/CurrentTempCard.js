@@ -74,6 +74,33 @@ class CurrentTempCard extends React.Component {
               Last updated at {this.state.temp2CreatedAt}
             </Card.Footer>
           </Card>
+          <Card>
+            <Card.Header className="card-header-small">Sensor 3</Card.Header>
+            <Card.Body>
+              <Card.Text className="text-center">
+                <div className="reading-text">
+                  {this.state.temp3}°F
+                </div>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer className="footer-text">
+              Last updated at {this.state.temp3CreatedAt}
+            </Card.Footer>
+          </Card>
+          <Card>
+            <Card.Header className="card-header-small">Sensor 4</Card.Header>
+            <Card.Body>
+              <Card.Text className="text-center">
+                <div className="reading-text">
+                  {this.state.temp4}°F
+                </div>
+              </Card.Text>
+            </Card.Body>
+            <Card.Footer className="footer-text">
+              Last updated at {this.state.temp4CreatedAt}
+            </Card.Footer>
+          </Card>
+
         </Card.Body>
       </Card>
     )
