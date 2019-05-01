@@ -33,8 +33,9 @@ class LightCard extends React.Component {
       .then(auth.checkStatus)
       .then(results => results.json())
       .then((responseJson) => {
+        console.log(responseJson)
         this.setState({
-          lightStatus: (responseJson['light'] == 'true' ? 'On' : 'Off'),
+          lightStatus: (responseJson['light'] ? 'On' : 'Off'),
           lightOnTime: (new Date(responseJson['light_on_time'])).toLocaleTimeString('en-US', { hour12: true }),
           lightOffTime: (new Date(responseJson['light_off_time'])).toLocaleTimeString('en-US', { hour12: true })
         })
