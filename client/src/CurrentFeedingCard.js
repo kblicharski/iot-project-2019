@@ -54,7 +54,6 @@ class CurrentFeedingCard extends React.Component {
     let content
     if (this.state.has_active) {
       content = <>
-        Active feeding
         <div className="reading-text">
           Crickets fed: {this.state.cricketsFed}
         </div>
